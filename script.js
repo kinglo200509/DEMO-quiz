@@ -1,13 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
   let question = document.querySelector(".question");
   let options = document.querySelectorAll(".options");
-  // let next = document.querySelector("#next");
-  // let back = document.querySelector("#back");
+  let next = document.querySelector("#next");
+  let back = document.querySelector("#back");
   let currentquestionindex = 0;
-  let x = document.querySelector("#next");
-
+  
+  function updatingoptions() {
+    options.forEach((numbering, index) => {
+      numbering.innerHTML = abcdOptions[currentquestionindex][index];
+        console.log("im updating the options")
+      });
+    };
   // Timer
-  let initlatime = 10;
+  let initlatime = 120;
   const countdown = setInterval(() => {
     const minutes = Math.floor(initlatime / 60);
     const seconds = initlatime % 60;
@@ -49,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ["Ash", "Gary", "Jessie"],
     ["Gold and silver", "Orange and pewter", "White and purple"]
   ];
-
+  
   
   options.forEach(options =>{
     options.addEventListener('click', function(){
@@ -66,17 +71,19 @@ document.addEventListener("DOMContentLoaded", function () {
   
     });
   })
-  
-  
-  
-  
-  function updatingoptions() {
-    options.forEach((numbering, index) => {
-      numbering.innerHTML = abcdOptions[currentquestionindex][index];
-        console.log("im updating the options")
-      });
-    };
-    
-    updatingoptions();
+  next.addEventListener('click', function(){
+    currentquestionindex++ ;
+    if (currentquestionindex >= 0 && currentquestionindex <= questions0fthequiz.length) {
+      console.log("hi there");
+      
+      updatingoptions();
+    }
+    else {
+      question.innerHTML = "quiz end";
+      clearInterval(countdown);
+    }
+
+   });
+   updatingoptions();
     
 });
