@@ -1,31 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
   let question = document.querySelector(".question");
   let options = document.querySelectorAll(".options");
-  let next = document.querySelector("#next");
-  let back = document.querySelector("#back");
+  let nextbutton=document.querySelector(".next"); 
   let currentquestionindex = 0;
   
-  function updatingoptions() {
-    options.forEach((numbering, index) => {
-      numbering.innerHTML = abcdOptions[currentquestionindex][index];
-        console.log("im updating the options")
-      });
-    };
   // Timer
   let initlatime = 120;
   const countdown = setInterval(() => {
     const minutes = Math.floor(initlatime / 60);
     const seconds = initlatime % 60;
-
+    
     document.querySelector(".timer").innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     initlatime--;
-
+    
     if (initlatime < 0) {
       clearInterval(countdown);
       document.querySelector(".timer").innerHTML = "Times up";
     }
   }, 1000);
-
+  
   // Questions
   const questions0fthequiz = [
     "What was that first Pokémon that Ash caught?",
@@ -39,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "Which of the following are Pok�mon games?"
   ];
   question.innerHTML = questions0fthequiz[currentquestionindex];
-
+  
   // Options for the current question
   const abcdOptions = [
     ["Fire", "Water", "Grass", "Dragon"], // Options for the first question
@@ -54,24 +47,16 @@ document.addEventListener("DOMContentLoaded", function () {
     ["Ash", "Gary", "Jessie"],
     ["Gold and silver", "Orange and pewter", "White and purple"]
   ];
+  function updatingoptions() {
+    options.forEach((numbering, index) => {
+      numbering.innerHTML = abcdOptions[currentquestionindex][index];
+        console.log("im updating the options")
+      });
+    };
   
   
-  options.forEach(options =>{
-    options.addEventListener('click', function(){
-      currentquestionindex++ ;
-      if (currentquestionindex >= 0 && currentquestionindex <= questions0fthequiz.length) {
-        console.log("hi there");
-        
-        updatingoptions();
-      }
-      else {
-        question.innerHTML = "quiz end";
-        clearInterval(countdown);
-      }
   
-    });
-  })
-  next.addEventListener('click', function(){
+  nextbutton.addEventListener('click', () =>{
     currentquestionindex++ ;
     if (currentquestionindex >= 0 && currentquestionindex <= questions0fthequiz.length) {
       console.log("hi there");

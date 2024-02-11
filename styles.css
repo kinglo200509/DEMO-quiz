@@ -124,6 +124,10 @@ body{
   padding: 0.5rem 2rem;
 }
 
+.buttons {
+  border: 2px solid black;
+  
+}
 
 .buttons > button{
   font-family: 'Press Start 2P', system-ui;
