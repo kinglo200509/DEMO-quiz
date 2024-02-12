@@ -1,8 +1,11 @@
+
 document.addEventListener("DOMContentLoaded", function () {
   let question = document.querySelector(".question");
   let options = document.querySelectorAll(".options");
-  let nextbutton=document.querySelector(".next"); 
-  let currentquestionindex = 0;
+  let nextbutton = document.querySelector(".next");
+  let AO=document.querySelector(".AO");
+  let currentquestionindex = 0; 
+  
   
   // Timer
   let initlatime = 120;
@@ -50,25 +53,22 @@ document.addEventListener("DOMContentLoaded", function () {
   function updatingoptions() {
     options.forEach((numbering, index) => {
       numbering.innerHTML = abcdOptions[currentquestionindex][index];
-        console.log("im updating the options")
-      });
-    };
-  
-  
-  
-  nextbutton.addEventListener('click', () =>{
-    currentquestionindex++ ;
-    if (currentquestionindex >= 0 && currentquestionindex <= questions0fthequiz.length) {
-      console.log("hi there");
-      
-      updatingoptions();
-    }
-    else {
-      question.innerHTML = "quiz end";
-      clearInterval(countdown);
-    }
+      console.log("im updating the options")
+    });
+  };
 
+AO.addEventListener('click',()=>{
+  console.log("saswat kuamr ");
+})
+ 
+
+
+  document.querySelector(".next").addEventListener('click', () =>{
+    currentquestionindex++ ;
+    console.log("working");
+  
    });
-   updatingoptions();
-    
+  
+  updatingoptions();
+  
 });
