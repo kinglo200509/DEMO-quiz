@@ -131,6 +131,11 @@ body{
 
 .buttons > button{
   font-family: 'Press Start 2P', system-ui;
+  
 
 
 }
+.buttons:hover{
+  border: 300px solid green;
+}
+
