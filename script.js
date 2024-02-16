@@ -3,25 +3,24 @@ document.addEventListener("DOMContentLoaded", function () {
   let question = document.querySelector(".question");
   let options = document.querySelectorAll(".options");
   let nextbutton = document.querySelector(".next");
-  let AO=document.querySelector(".AO");
-  let currentquestionindex = 0; 
-  
-  
+  let currentquestionindex = 0;
+
+
   // Timer
   let initlatime = 120;
   const countdown = setInterval(() => {
     const minutes = Math.floor(initlatime / 60);
     const seconds = initlatime % 60;
-    
+
     document.querySelector(".timer").innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     initlatime--;
-    
+
     if (initlatime < 0) {
       clearInterval(countdown);
       document.querySelector(".timer").innerHTML = "Times up";
     }
   }, 1000);
-  
+
   // Questions
   const questions0fthequiz = [
     "What was that first Pokémon that Ash caught?",
@@ -35,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "Which of the following are Pok�mon games?"
   ];
   question.innerHTML = questions0fthequiz[currentquestionindex];
-  
+
   // Options for the current question
   const abcdOptions = [
     ["Fire", "Water", "Grass", "Dragon"], // Options for the first question
@@ -57,18 +56,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   };
 
-AO.addEventListener('click',()=>{
-  console.log("saswat kuamr ");
-})
- 
 
 
-  document.querySelector(".next").addEventListener('click', () =>{
-    currentquestionindex++ ;
+
+
+  document.querySelector(".next").addEventListener('click', () => {
     console.log("working");
+    currentquestionindex++;
+    if (currentquestionindex < questions0fthequiz.length()) {
+      question.innerHTML=questions0fthequiz[currentquestionindex];
+      updatingoptions();
+    }
+    else{
+      console.log("nothing");
+    }
+
+  });
   
-   });
-  
+
   updatingoptions();
-  
+
 });
